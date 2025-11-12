@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Linear Regression - Prediction</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #74abe2, #5563de);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 40px;
+        width: 420px;
+        text-align: center;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        transition: transform 0.3s ease;
+      }
+
+      .container:hover {
+        transform: translateY(-5px);
+      }
+
+      .input-group {
+        margin: 20px 0;
+      }
+
+      input[type="number"] {
+        width: 80%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        text-align: center;
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+      }
+
+      button {
+        background: #fff;
+        color: #5563de;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background: #5563de;
+        color: #fff;
+        transform: scale(1.05);
+      }
+
+      .result-box {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #fff;
+      }
+
+      footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: #f0f0f0;
+      }
+
+      .title-icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title-icon"></div>
+      <h1>Predict Son's Height</h1>
+      <p>Enter Father's height in cm to predict the Son's height</p>
+
+      <form action="/predict" method="post">
+        <div class="input-group">
+          <input
+            type="number"
+            name="father_height"
+            placeholder="Enter father's height (cm)"
+            required
+          />
+        </div>
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if prediction_text %}
+      <div class="result-box">{{ prediction_text }}</div>
+      {% endif %}
+    </div>
+
+    <footer>Developed by <b>Uday Kiran</b> 🚀</footer>
+  </body>
+</html>
